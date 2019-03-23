@@ -2,8 +2,8 @@
     <Connections>
         <Connection Name="AdventureWorks2016" ConnectionString = "Data Source = localhost; Initial catalog = AdventureWorks2016; Provider = SQLNCLI11.1; Integrated Security = SSPI;" />
         <Connection Name="BIML_01_ADVTW_DST"  ConnectionString = "Data Source = localhost; Initial catalog = BIML_01_ADVTW_DST;  Provider = SQLNCLI11.1; Integrated Security = SSPI;" />
-     </Connections> 
-     
+     </Connections>
+     <!-- Comments to be removed 2019-03-23 -->
      <Packages>
          <Package Name="Load Department" ConstraintMode="Linear" ProtectionLevel="EncryptSensitiveWithUserKey">
             <Tasks>

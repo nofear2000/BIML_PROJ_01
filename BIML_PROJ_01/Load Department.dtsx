@@ -1,152 +1,528 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DTS:Executable DTS:CreationDate="03/20/2019 17:34:33" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="DESKTOP-09QM7Q6" DTS:CreatorName="David" DTS:DTSID="{9AA8788A-4890-4059-A037-ECDBEF078D8E}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="" DTS:LocaleID="1033" DTS:ObjectName="Load Department" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{ACA5A7A8-5251-467D-AD16-6BC8E4E252A6}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
-  <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/20/2019 5:34:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-09QM7Q6"
+  DTS:CreatorName="David"
+  DTS:DTSID="{9AA8788A-4890-4059-A037-ECDBEF078D8E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.106"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load Department"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{4A13B990-CFCF-41AD-8E1A-B8A9D3BCFD08}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager DTS:CreationName="OLEDB" DTS:DTSID="{5DA82C65-F4F8-45D4-B9D6-30254F2DE5D9}" DTS:ObjectName="AdventureWorks2016" DTS:refId="Package.ConnectionManagers[AdventureWorks2016]">
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorks2016]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5DA82C65-F4F8-45D4-B9D6-30254F2DE5D9}"
+      DTS:ObjectName="AdventureWorks2016">
       <DTS:ObjectData>
-        <DTS:ConnectionManager DTS:ConnectionString="data source=localhost;initial catalog=AdventureWorks2016;provider=SQLNCLI11.1;integrated security=SSPI" />
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=localhost;initial catalog=AdventureWorks2016;provider=SQLNCLI11.1;integrated security=SSPI;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager DTS:CreationName="OLEDB" DTS:DTSID="{2990F2DF-9DDA-4FCB-95B3-7E14A788A67E}" DTS:ObjectName="BIML_01_ADVTW_DST" DTS:refId="Package.ConnectionManagers[BIML_01_ADVTW_DST]">
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BIML_01_ADVTW_DST]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2990F2DF-9DDA-4FCB-95B3-7E14A788A67E}"
+      DTS:ObjectName="BIML_01_ADVTW_DST">
       <DTS:ObjectData>
-        <DTS:ConnectionManager DTS:ConnectionString="data source=localhost;initial catalog=BIML_01_ADVTW_DST;provider=SQLNCLI11.1;integrated security=SSPI" />
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=localhost;initial catalog=BIML_01_ADVTW_DST;provider=SQLNCLI11.1;integrated security=SSPI;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable DTS:CreationName="Microsoft.ExecuteSQLTask" DTS:DTSID="{6283A6E9-8695-421A-A3F9-D0B23EF845DF}" DTS:ExecutableType="Microsoft.ExecuteSQLTask" DTS:LocaleID="-1" DTS:ObjectName="EXSQL Truncate Department" DTS:refId="Package\EXSQL Truncate Department" DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+    <DTS:Executable
+      DTS:refId="Package\DF Department"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{6225D0A2-B96E-4FFF-AC47-BB9A11E02A4B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Department"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
       <DTS:ObjectData>
-        <SQLTask:SqlTaskData SQLTask:Connection="BIML_01_ADVTW_DST" SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Department_Copy" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable DTS:CreationName="Microsoft.Pipeline" DTS:DTSID="{6225D0A2-B96E-4FFF-AC47-BB9A11E02A4B}" DTS:ExecutableType="Microsoft.Pipeline" DTS:LocaleID="-1" DTS:ObjectName="DF Department" DTS:refId="Package\DF Department" DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:ObjectData>
-        <pipeline BLOBTempStoragePath="" bufferTempStoragePath="" name="pipelineXml" version="1">
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
           <components>
-            <component componentClassID="Microsoft.OLEDBSource" contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7" name="OLESRC Department" refId="Package\DF Department\OLESRC Department" usesDispositions="true" version="7">
-              <connections>
-                <connection connectionManagerID="{5DA82C65-F4F8-45D4-B9D6-30254F2DE5D9}:external" connectionManagerRefId="Package.ConnectionManagers[AdventureWorks2016]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DF Department\OLESRC Department.Connections[OleDbConnection]" />
-              </connections>
-              <outputs>
-                <output name="Output" refId="Package\DF Department\OLESRC Department.Outputs[Output]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i2" name="DepartmentID" refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[DepartmentID]" />
-                    <externalMetadataColumn dataType="wstr" length="50" name="Name" refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[Name]" />
-                    <externalMetadataColumn dataType="wstr" length="50" name="GroupName" refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[GroupName]" />
-                    <externalMetadataColumn dataType="dbTimeStamp" name="ModifiedDate" refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[ModifiedDate]" />
-                  </externalMetadataColumns>
-                  <outputColumns>
-                    <outputColumn dataType="i2" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[DepartmentID]" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[DepartmentID]" name="DepartmentID" refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[DepartmentID]" truncationRowDisposition="FailComponent" />
-                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[Name]" length="50" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[Name]" name="Name" refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[Name]" truncationRowDisposition="FailComponent" />
-                    <outputColumn dataType="wstr" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[GroupName]" length="50" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[GroupName]" name="GroupName" refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[GroupName]" truncationRowDisposition="FailComponent" />
-                    <outputColumn dataType="dbTimeStamp" errorOrTruncationOperation="Conversion" errorRowDisposition="FailComponent" externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[ModifiedDate]" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[ModifiedDate]" name="ModifiedDate" refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[ModifiedDate]" truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                </output>
-                <output isErrorOut="true" name="Error" refId="Package\DF Department\OLESRC Department.Outputs[Error]">
-                  <externalMetadataColumns />
-                  <outputColumns>
-                    <outputColumn dataType="i2" lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[DepartmentID]" name="DepartmentID" refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[DepartmentID]" />
-                    <outputColumn dataType="wstr" length="50" lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[Name]" name="Name" refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[Name]" />
-                    <outputColumn dataType="wstr" length="50" lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[GroupName]" name="GroupName" refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[GroupName]" />
-                    <outputColumn dataType="dbTimeStamp" lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ModifiedDate]" name="ModifiedDate" refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ModifiedDate]" />
-                    <outputColumn dataType="i4" lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorCode]" specialFlags="1" />
-                    <outputColumn dataType="i4" lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorColumn]" specialFlags="2" />
-                  </outputColumns>
-                </output>
-              </outputs>
-              <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[HumanResources].[Department]</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable" />
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor" />
-                <property dataType="System.String" description="The variable that contains the SQL command to be executed." name="SqlCommandVariable" />
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">0</property>
-                <property dataType="System.String" description="The mappings between the parameters in the SQL command and variables." name="ParameterMapping" />
-              </properties>
-            </component>
-            <component componentClassID="Microsoft.DerivedColumn" contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0" name="Der Add LoadDate" refId="Package\DF Department\Der Add LoadDate" usesDispositions="true">
+            <component
+              refId="Package\DF Department\Der Add LoadDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Der Add LoadDate"
+              usesDispositions="true">
               <inputs>
-                <input name="OLESRC Department_Output_Der Add LoadDate" refId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]">
+                <input
+                  refId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]"
+                  name="OLESRC Department_Output_Der Add LoadDate">
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" name="Output" refId="Package\DF Department\Der Add LoadDate.Outputs[Output]" synchronousInputId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]">
-                  <externalMetadataColumns />
+                <output
+                  refId="Package\DF Department\Der Add LoadDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]">
                   <outputColumns>
-                    <outputColumn dataType="dbTimeStamp" errorOrTruncationOperation="Computation" errorRowDisposition="FailComponent" lineageId="Package\DF Department\Der Add LoadDate.Outputs[Output].Columns[LoadDate]" name="LoadDate" refId="Package\DF Department\Der Add LoadDate.Outputs[Output].Columns[LoadDate]" truncationRowDisposition="FailComponent">
+                    <outputColumn
+                      refId="Package\DF Department\Der Add LoadDate.Outputs[Output].Columns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF Department\Der Add LoadDate.Outputs[Output].Columns[LoadDate]"
+                      name="LoadDate"
+                      truncationRowDisposition="FailComponent">
                       <properties>
-                        <property dataType="System.String" description="Derived Column Expression" name="Expression">GETDATE()</property>
-                        <property dataType="System.String" description="Derived Column Friendly Expression" expressionType="Notify" name="FriendlyExpression">GETDATE()</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">GETDATE()</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
-                </output>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DF Department\Der Add LoadDate.Outputs[Error]" synchronousInputId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]">
                   <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF Department\Der Add LoadDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorCode]" specialFlags="1" />
-                    <outputColumn dataType="i4" lineageId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorColumn]" specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Department\Der Add LoadDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
-            <component componentClassID="Microsoft.OLEDBDestination" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" name="OLEDEST Department" refId="Package\DF Department\OLEDEST Department" usesDispositions="true" version="4">
+            <component
+              refId="Package\DF Department\OLEDEST Department"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="OLEDEST Department"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">dbo.Department_Copy</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
               <connections>
-                <connection connectionManagerID="{2990F2DF-9DDA-4FCB-95B3-7E14A788A67E}:external" connectionManagerRefId="Package.ConnectionManagers[BIML_01_ADVTW_DST]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection" refId="Package\DF Department\OLEDEST Department.Connections[OleDbConnection]" />
+                <connection
+                  refId="Package\DF Department\OLEDEST Department.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BIML_01_ADVTW_DST]"
+                  connectionManagerRefId="Package.ConnectionManagers[BIML_01_ADVTW_DST]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
-                <input errorOrTruncationOperation="Insert" errorRowDisposition="FailComponent" hasSideEffects="true" name="Der Add LoadDate_Output_OLEDEST Department" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department]">
-                  <externalMetadataColumns isUsed="True">
-                    <externalMetadataColumn dataType="i2" name="DepartmentID" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[DepartmentID]" />
-                    <externalMetadataColumn dataType="wstr" length="50" name="Name" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[Name]" />
-                    <externalMetadataColumn dataType="wstr" length="50" name="GroupName" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[GroupName]" />
-                    <externalMetadataColumn dataType="dbTimeStamp" name="ModifiedDate" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[ModifiedDate]" />
-                    <externalMetadataColumn dataType="dbTimeStamp" name="LoadDate" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[LoadDate]" />
-                  </externalMetadataColumns>
+                <input
+                  refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Der Add LoadDate_Output_OLEDEST Department">
                   <inputColumns>
-                    <inputColumn cachedDataType="dbTimeStamp" cachedName="LoadDate" externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[LoadDate]" lineageId="Package\DF Department\Der Add LoadDate.Outputs[Output].Columns[LoadDate]" name="" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[LoadDate]" />
-                    <inputColumn cachedDataType="wstr" cachedLength="50" cachedName="Name" externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[Name]" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[Name]" name="" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[Name]" />
-                    <inputColumn cachedDataType="wstr" cachedLength="50" cachedName="GroupName" externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[GroupName]" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[GroupName]" name="" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[GroupName]" />
-                    <inputColumn cachedDataType="dbTimeStamp" cachedName="ModifiedDate" externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[ModifiedDate]" lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[ModifiedDate]" name="" refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[ModifiedDate]" />
+                    <inputColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[LoadDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LoadDate"
+                      externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[LoadDate]"
+                      lineageId="Package\DF Department\Der Add LoadDate.Outputs[Output].Columns[LoadDate]" />
+                    <inputColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[Name]"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[GroupName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="GroupName"
+                      externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[GroupName]"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[GroupName]" />
+                    <inputColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[ModifiedDate]" />
                   </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[DepartmentID]"
+                      dataType="i2"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[GroupName]"
+                      dataType="wstr"
+                      length="50"
+                      name="GroupName" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department].ExternalColumns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadDate" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
-                <output exclusionGroup="1" isErrorOut="true" name="Error" refId="Package\DF Department\OLEDEST Department.Outputs[Error]" synchronousInputId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department]">
-                  <externalMetadataColumns />
+                <output
+                  refId="Package\DF Department\OLEDEST Department.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department]">
                   <outputColumns>
-                    <outputColumn dataType="i4" lineageId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorCode]" name="ErrorCode" refId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorCode]" specialFlags="1" />
-                    <outputColumn dataType="i4" lineageId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorColumn]" name="ErrorColumn" refId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorColumn]" specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Department\OLEDEST Department.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
                 </output>
               </outputs>
+            </component>
+            <component
+              refId="Package\DF Department\OLESRC Department"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="OLESRC Department"
+              usesDispositions="true"
+              version="7">
               <properties>
-                <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
-                <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">dbo.Department_Copy</property>
-                <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable" />
-                <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor" />
-                <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1252</property>
-                <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
-                <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode">3</property>
-                <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
-                <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
-                <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[HumanResources].[Department]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
               </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Department\OLESRC Department.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AdventureWorks2016]"
+                  connectionManagerRefId="Package.ConnectionManagers[AdventureWorks2016]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF Department\OLESRC Department.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[DepartmentID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[DepartmentID]"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[GroupName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[GroupName]"
+                      length="50"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[GroupName]"
+                      name="GroupName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[DepartmentID]"
+                      dataType="i2"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[GroupName]"
+                      dataType="wstr"
+                      length="50"
+                      name="GroupName" />
+                    <externalMetadataColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF Department\OLESRC Department.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[DepartmentID]"
+                      dataType="i2"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[DepartmentID]"
+                      name="DepartmentID" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[GroupName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[GroupName]"
+                      name="GroupName" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Department\OLESRC Department.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
           </components>
           <paths>
-            <path endId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]" name="OLESRC Department_Output_Der Add LoadDate" refId="Package\DF Department.Paths[OLESRC Department_Output_Der Add LoadDate]" startId="Package\DF Department\OLESRC Department.Outputs[Output]" />
-            <path endId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department]" name="Der Add LoadDate_Output_OLEDEST Department" refId="Package\DF Department.Paths[Der Add LoadDate_Output_OLEDEST Department]" startId="Package\DF Department\Der Add LoadDate.Outputs[Output]" />
+            <path
+              refId="Package\DF Department.Paths[Der Add LoadDate_Output_OLEDEST Department]"
+              endId="Package\DF Department\OLEDEST Department.Inputs[Der Add LoadDate_Output_OLEDEST Department]"
+              name="Der Add LoadDate_Output_OLEDEST Department"
+              startId="Package\DF Department\Der Add LoadDate.Outputs[Output]" />
+            <path
+              refId="Package\DF Department.Paths[OLESRC Department_Output_Der Add LoadDate]"
+              endId="Package\DF Department\Der Add LoadDate.Inputs[OLESRC Department_Output_Der Add LoadDate]"
+              name="OLESRC Department_Output_Der Add LoadDate"
+              startId="Package\DF Department\OLESRC Department.Outputs[Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXSQL Truncate_Department"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="EXSQL Truncate_Department"
+      DTS:DTSID="{6283A6E9-8695-421A-A3F9-D0B23EF845DF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXSQL Truncate_Department"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2990F2DF-9DDA-4FCB-95B3-7E14A788A67E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Department_Copy" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint DTS:CreationName="" DTS:DTSID="{06C0586F-59B5-4228-A214-384901931047}" DTS:From="Package\EXSQL Truncate Department" DTS:LogicalAnd="True" DTS:ObjectName="Constraint_EXSQL Truncate Department_To_DF Department" DTS:refId="Package.PrecedenceConstraints[Constraint_EXSQL Truncate Department_To_DF Department]" DTS:To="Package\DF Department" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_EXSQL Truncate Department_To_DF Department]"
+      DTS:CreationName=""
+      DTS:DTSID="{06C0586F-59B5-4228-A214-384901931047}"
+      DTS:From="Package\EXSQL Truncate_Department"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_EXSQL Truncate Department_To_DF Department"
+      DTS:To="Package\DF Department" />
   </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\DF Department"
+          TopLeft="37.1,107.1" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\EXSQL Truncate_Department"
+          TopLeft="5.50000000000001,5.50000000000007" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint_EXSQL Truncate Department_To_DF Department]"
+          TopLeft="112.3,47.1000000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
