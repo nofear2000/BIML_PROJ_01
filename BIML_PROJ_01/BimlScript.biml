@@ -1,0 +1,39 @@
+﻿<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <Connection Name="AdventureWorks2016" ConnectionString = "Data Source = localhost; Initial catalog = AdventureWorks2016; Provider = SQLNCLI11.1; Integrated Security = SSPI;" />
+        <Connection Name="BIML_01_ADVTW_DST"  ConnectionString = "Data Source = localhost; Initial catalog = BIML_01_ADVTW_DST;  Provider = SQLNCLI11.1; Integrated Security = SSPI;" />
+     </Connections> 
+     
+     <Packages>
+         <Package Name="Load Department" ConstraintMode="Linear" ProtectionLevel="EncryptSensitiveWithUserKey">
+            <Tasks>
+            
+                <ExecuteSQL Name = "EXSQL Truncate Department" ConnectionName = "BIML_01_ADVTW_DST">
+                    <DirectInput>TRUNCATE TABLE dbo.Department_Copy</DirectInput>
+                </ExecuteSQL>
+                <Dataflow Name = "DF Department">
+                    <Transformations>
+                        <OleDbSource Name = "OLESRC Department" ConnectionName="AdventureWorks2016">
+                            <ExternalTableInput Table="[HumanResources].[Department]"></ExternalTableInput>
+                        </OleDbSource>
+                        
+                        <DerivedColumns Name="Der Add LoadDate">
+                            <Columns>
+                                <Column Name = "LoadDate" DataType="DateTime">
+                                    GETDATE()
+                                </Column>
+                            </Columns>
+                        </DerivedColumns>
+                 
+                        <OleDbDestination Name="OLEDEST Department" ConnectionName="BIML_01_ADVTW_DST">
+                            <ExternalTableOutput Table="dbo.Department_Copy"></ExternalTableOutput>
+                        </OleDbDestination>
+                    </Transformations>
+                </Dataflow>    
+                
+            </Tasks>    
+         </Package>
+         
+     </Packages>
+     
+</Biml>     
