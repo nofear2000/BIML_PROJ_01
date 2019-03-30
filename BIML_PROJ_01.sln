@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BIML_PROJ_01", "BIML_PROJ_01\BIML_PROJ_01.dtproj", "{22D927B7-D34A-4A39-B7E8-885C90A6489C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{32369463-BDDD-4430-9E8E-FF351CFBAF43}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77CE5E43-AA9B-4B6C-A101-8B948DF6E285}"
 	ProjectSection(SolutionItems) = preProject
 		masterText.txt = masterText.txt
